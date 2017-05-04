@@ -35,6 +35,7 @@ object Example extends App {
   exec(messages.schema.create)
   exec(messages ++= freshTestData)
 
+  /* Verbose attempt 1:
 
   def or(values: List[(Int,Int)]): MessageTable => Rep[Boolean] =
     m => values match {
@@ -44,7 +45,14 @@ object Example extends App {
 
   val data = List( (9,8), (1,2) )
   val q = messages.filter( or(data) )
+  */
+
+ // Nicer way, vai SO:
+
+  val data = List( (9,8), (1,2) )
+  val q = messages.filter( m =>
+    data.collect { case (a,b) => m.x === a && m.y === b }.reduceLeft(_ || _)
+  )
 
   println(q.result.statements)
-
 }

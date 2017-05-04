@@ -1,6 +1,4 @@
-# First attempt at constructing an EXP or EXP or EXP.
-
-A nicer way:
+# Attempt at constructing an EXP or EXP or EXP.
 
 ```
 val q = messages.filter( m =>
@@ -8,7 +6,7 @@ val q = messages.filter( m =>
 )
 ```
 
-via:
+from:
 http://stackoverflow.com/a/26816681/154248
 
 
