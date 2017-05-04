@@ -4,7 +4,7 @@ import scala.concurrent.Await
 import scala.concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
 
-object Example extends App {
+object OrExample extends App {
 
   final case class Message(
     x : Int,
@@ -23,7 +23,7 @@ object Example extends App {
     def x  = column[Int]("x")
     def y  = column[Int]("y")
 
-    def * = (x, y) <> (Message.tupled, Message.unapply)
+    def * = (x, y).mapTo[Message]
   }
 
   lazy val messages = TableQuery[MessageTable]
